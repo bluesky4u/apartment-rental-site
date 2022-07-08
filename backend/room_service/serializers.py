@@ -17,8 +17,8 @@ class ApartmentTypeSerializer(serializers.ModelSerializer):
 
 
 class ApartmentSerializer(serializers.ModelSerializer):
-    apartment_image = serializers.HyperlinkedRelatedField(
-        many=True, read_only=True, view_name="ApartmentImageViewSet", allow_null=True)
+    # apartment_image = serializers.HyperlinkedRelatedField(
+    #     many=True, read_only=True, view_name="room-service:apartment-image-view-set", allow_null=True)
 
     class Meta:
         model = Apartment
