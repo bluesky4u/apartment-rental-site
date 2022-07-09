@@ -12,6 +12,7 @@ class Location(models.Model):
 class ApartmentType(models.Model):
 
     name = models.CharField(max_length=20, default="Unspecified")
+    image = models.ImageField(upload_to="apartment_type", default="")
 
 
 class Apartment(models.Model):
