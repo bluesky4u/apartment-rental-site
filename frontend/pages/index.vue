@@ -399,7 +399,7 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
         <main>
             <section class="py-4">
                 <h2 class="text-2xl text-center py-3">Explore rentals in Accra</h2>
-                <Carousel :value="apartments" :numVisible=5 :numScroll="3" :circular="true"
+                <Carousel :value="apartments" :numVisible=5 :numScroll="3" :circular="true" :autoplayInterval="3000"
                     :responsiveOptions="responsiveOptions">
                     <template #item="{ data: apartment }">
                         <div class="mx-5">
@@ -429,6 +429,62 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
                     </template>
                 </Carousel>
             </section>
+
+            <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
+                <h2 class="text-3xl mb-16">Let's help you find your new home</h2>
+                <Button label="Explore all properties" class=" p-button-rounded  p-button-outlined" @click="" />
+            </section>
+
+            <section class="mx-20 my-5">
+                <div>
+                    <div class="flex flex-row items-center">
+                        <span class="text-xl flex-none pr-5">Who are we</span>
+                        <span class="after:content-[''] flex-1 box-border h-px border-t border-black"></span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vel quia tempore sint repellat
+                        dolor ipsa. Rem dolores perspiciatis ea itaque? Error tenetur rem facilis voluptatum molestias
+                        laboriosam reiciendis, eius officia amet possimus beatae natus reprehenderit explicabo modi
+                        laborum consequatur, sed nemo! Aperiam illum quas minima dolores suscipit expedita, explicabo
+                        quasi rerum, excepturi adipisci dolore molestiae! Sint odio accusantium deserunt et rem
+                        voluptatum veniam distinctio aut ratione eligendi vel quas maxime at repellendus quos, quaerat
+                        ipsam consequuntur illo sunt quis! Eveniet est quibusdam, consectetur facere tempora, molestiae
+                        magni saepe dolor optio totam voluptate voluptatibus facilis obcaecati. Voluptatibus laborum
+                        voluptatem natus!</p>
+                </div>
+                <div>
+                    <div class="flex flex-row items-center">
+                        <span class="text-xl flex-none pr-5">Who are we</span>
+                        <span class="after:content-[''] flex-1 box-border h-px border-t border-black"></span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vel quia tempore sint repellat
+                        dolor ipsa. Rem dolores perspiciatis ea itaque? Error tenetur rem facilis voluptatum molestias
+                        laboriosam reiciendis, eius officia amet possimus beatae natus reprehenderit explicabo modi
+                        laborum consequatur, sed nemo! Aperiam illum quas minima dolores suscipit expedita, explicabo
+                        quasi rerum, excepturi adipisci dolore molestiae! Sint odio accusantium deserunt et rem
+                        voluptatum veniam distinctio aut ratione eligendi vel quas maxime at repellendus quos, quaerat
+                        ipsam consequuntur illo sunt quis! Eveniet est quibusdam, consectetur facere tempora, molestiae
+                        magni saepe dolor optio totam voluptate voluptatibus facilis obcaecati. Voluptatibus laborum
+                        voluptatem natus!</p>
+                </div>
+            </section>
         </main>
+
+        <footer class="mx-20 my-10 flex flex-row">
+            <div class="flex flex-col w-1/2">
+                <span class="text-2xl">Logo</span>
+                <span>About us</span>
+                <span>Contact us</span>
+
+            </div>
+            <div class="w-1/2 flex flex-col">
+                <span>On a hunt? We can send you updates</span>
+                <div class="flex flex-row my-5">
+                    <label for="email" class="hidden">Search</label>
+                    <input type="email" id="email" class="h-10 w-3/5 mr-5 bg-[#374151] pl-4 rounded-full text-white"
+                        placeholder="Email Address">
+                    <Button label="Submit" class="p-button-outlined p-button-rounded" @click="" />
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
