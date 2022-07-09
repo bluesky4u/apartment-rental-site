@@ -4,10 +4,14 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
     css: [
         '@/assets/css/main.css',
-      ],
-      build: {
+        'primevue/resources/themes/saga-blue/theme.css',
+        'primevue/resources/primevue.css',
+        'primeicons/primeicons.css',
+    ],
+    build: {
         postcss: {
-          postcssOptions: require('./postcss.config.js'),
+            postcssOptions: require('./postcss.config.js'),
         },
-      }
+        transpile: ['primevue'],
+    }
 })

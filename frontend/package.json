@@ -12,5 +12,9 @@
     "nuxt": "3.0.0-rc.4",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.5"
+  },
+  "dependencies": {
+    "primeicons": "^5.0.0",
+    "primevue": "^3.15.0"
   }
 }
