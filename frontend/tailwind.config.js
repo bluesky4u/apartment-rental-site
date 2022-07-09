@@ -7,7 +7,11 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-background': "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(~/assets/img/estate.jpg)",
+      }
+    },
   },
   plugins: [],
 }
