@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Carousel1 from '~~/components/Carousel.vue';
 interface Apartment {
     id: number;
     name: string;
@@ -354,23 +355,6 @@ const apartmentTypes: ApartmentType[] = [
     }
 ]
 
-const responsiveOptions = [
-    {
-        breakpoint: '1024px',
-        numVisible: 3,
-        numScroll: 3
-    },
-    {
-        breakpoint: '600px',
-        numVisible: 2,
-        numScroll: 2
-    },
-    {
-        breakpoint: '480px',
-        numVisible: 1,
-        numScroll: 1
-    }
-]
 
 const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartments')
 </script>
@@ -397,37 +381,38 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
         </header>
 
         <main>
-            <section class="py-4">
+            <section class="mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Explore rentals in Accra</h2>
-                <Carousel :value="apartments" :numVisible=5 :numScroll="3" :circular="true" :autoplayInterval="3000"
-                    :responsiveOptions="responsiveOptions">
-                    <template #item="{ data: apartment }">
-                        <div class="mx-5">
-                            <img :src="apartment.image[0].image" alt="Apartment" class="w-full">
-                            <div class="pt-2">
-                                <span class="text-xl">{{ apartment.name }}</span>
-                                <!-- <p class="text-xl">{{ data. }}</p> -->
-                                <p class="">{{ apartment.location.city }}</p>
-                                <p class="">{{ apartment.price }}</p>
-                            </div>
+                <CustomCarousel :data="apartments">
+                    <template #item="apartment: Apartment">
+                        <div class="flex flex-col items-center mb-10">
+                            <NuxtLink :to="`/apartment/` + apartment.id">
+                                <div>
+                                    <img :src="apartment.image[0].image" alt="Apartment" class="apartment-image">
+                                </div>
+                                <div class="pt-2">
+                                    <span class="text-xl">{{ apartment.name }}</span>
+                                    <p class="">{{ apartment.location.city }}</p>
+                                    <p class="">{{ apartment.price }}</p>
+                                </div>
+                            </NuxtLink>
                         </div>
                     </template>
-                </Carousel>
+                </CustomCarousel>
             </section>
 
-            <section class="py-4">
+            <section class="mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Browse apartments by type</h2>
-                <Carousel :value="apartmentTypes" :numVisible=5 :numScroll="3" :circular="true" :autoplayInterval="3000"
-                    :responsiveOptions="responsiveOptions">
-                    <template #item="{ data: type }">
-                        <div class="mx-5">
-                            <img :src="type.image" alt="apartment type" class="w-full">
+                <CustomCarousel :data="apartmentTypes">
+                    <template #item="apartment_type: ApartmentType">
+                        <div class="flex flex-col items-center mb-10">
+                            <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
                             <div class="pt-2">
-                                <span class="text-xl">{{ type.name }}</span>
+                                <span class="text-xl">{{ apartment_type.name }}</span>
                             </div>
                         </div>
                     </template>
-                </Carousel>
+                </CustomCarousel>
             </section>
 
             <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
@@ -469,22 +454,5 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
             </section>
         </main>
 
-        <footer class="mx-20 my-10 flex flex-row justify-between">
-            <div class="flex flex-col w-1/2">
-                <span class="text-2xl">Logo</span>
-                <span>About us</span>
-                <span>Contact us</span>
-
-            </div>
-            <div class="w-1/2 flex flex-col">
-                <span>On a hunt? We can send you updates</span>
-                <div class="flex flex-row my-5 justify-between">
-                    <label for="email" class="hidden">Search</label>
-                    <input type="email" id="email" class="h-10 w-4/5 mr-2 bg-[#374151] pl-4 rounded-full text-white"
-                        placeholder="Email Address">
-                    <Button label="Submit" class="p-button-outlined p-button-rounded" @click="" />
-                </div>
-            </div>
-        </footer>
     </div>
 </template>
