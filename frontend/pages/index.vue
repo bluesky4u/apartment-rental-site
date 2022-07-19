@@ -1,35 +1,6 @@
 <script setup lang="ts">
-import Carousel1 from '~~/components/Carousel.vue';
-interface Apartment {
-    id: number;
-    name: string;
-    location: ApartmentLocation;
-    price: number;
-    bedrooms: number;
-    bathrooms: number;
-    description: string;
-    image: ApartmentImage[];
-    availability?: Date
-}
 
-interface ApartmentLocation {
-    id: number;
-    city: string;
-    long: number;
-    lat: number;
-}
-
-interface ApartmentType {
-    id: number;
-    name: string;
-    image: string;
-}
-
-interface ApartmentImage {
-    id: number;
-    image: string;
-}
-
+import { Apartment, ApartmentType } from '~~/composables/types';
 
 const hero = ref<Element | null>(null)
 const navSticky = ref(false)
@@ -364,7 +335,7 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
     <div id="main" ref="main">
         <header class="flex flex-col w-full" ref="header">
             <nav ref="nav" class="flex flex-row justify-between items-center fixed inset-x-0 top-0 py-5 z-50"
-                :class="navSticky ? 'bg-gray-900' : 'bg-transparent'">
+                :class="navSticky ? 'bg-white' : 'bg-transparent'">
                 <span class="m-0 text-2xl">Logo</span>
                 <label for="search" class="hidden">Search</label>
                 <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
