@@ -9,9 +9,12 @@ import BedroomIcon from '../../components/svgs/BedroomIcon.vue';
 import BathIcon from '../../components/svgs/BathIcon.vue';
 import CalenderIcon from '../../components/svgs/CalenderIcon.vue';
 
+
+const route = useRoute()
+
 const apartmentDetails: Apartment = {
     id: 0,
-    name: 'Big Size Condo',
+    name: route.fullPath,
     location: {
         city: "Kasoa",
         id: 1,
