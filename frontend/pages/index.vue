@@ -336,7 +336,9 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
         <header class="flex flex-col w-full" ref="header">
             <nav ref="nav" class="flex flex-row justify-between items-center fixed inset-x-0 top-0 py-5 z-50"
                 :class="navSticky ? 'bg-white' : 'bg-transparent'">
-                <span class="m-0 text-2xl">Logo</span>
+                <span class="m-0 text-2xl">
+                    <NuxtLink to="/">Logo</NuxtLink>
+                </span>
                 <label for="search" class="hidden">Search</label>
                 <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
                     placeholder="Enter A City/Region Here">
@@ -377,10 +379,12 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
                 <CustomCarousel :data="apartmentTypes">
                     <template #item="apartment_type: ApartmentType">
                         <div class="flex flex-col items-center mb-10">
-                            <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
-                            <div class="pt-2">
-                                <span class="text-xl">{{ apartment_type.name }}</span>
-                            </div>
+                            <NuxtLink :to="`type/${1}`">
+                                <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
+                                <div class="pt-2">
+                                    <span class="text-xl">{{ apartment_type.name }}</span>
+                                </div>
+                            </NuxtLink>
                         </div>
                     </template>
                 </CustomCarousel>

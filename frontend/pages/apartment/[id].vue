@@ -264,7 +264,12 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
 
                 </main>
                 <aside>
-                    sidebar
+                    <div class="flex flex-col border p-3 rounded text-center sticky top-20 md:ml-10">
+                        <span class="my-2">Contact this Property</span>
+                        <button type="button" class="bg-red-200 py-2 my-2">Request Tour</button>
+                        <button type="button" class="py-2 my-2 border border-red-200">Send Message</button>
+                        <span class="my-2">00 23 434 545</span>
+                    </div>
                 </aside>
             </div>
             <div>
