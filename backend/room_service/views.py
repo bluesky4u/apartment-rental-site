@@ -2,8 +2,8 @@ from django import views
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from .models import ApartmentImage, Location, ApartmentType, Apartment
-from .serializers import ApartmentImageSerializer, LocationSerializer, ApartmentSerializer, ApartmentTypeSerializer
+from .models import ApartmentFeature, ApartmentImage, Location, ApartmentType, Apartment
+from .serializers import ApartmentFeatureSerializer, ApartmentImageSerializer, LocationSerializer, ApartmentSerializer, ApartmentTypeSerializer
 
 
 class LocationViewSet(viewsets.ModelViewSet):
@@ -25,3 +25,8 @@ class ApartmentImageViewSet(viewsets.ModelViewSet):
     queryset = ApartmentImage.objects.all()
     serializer_class = ApartmentImageSerializer
 
+
+
+class ApartmentFeatureViewSet(viewsets.ModelViewSet):
+    queryset = ApartmentFeature.objects.all()
+    serializer_class = ApartmentFeatureSerializer

@@ -1,7 +1,7 @@
 from dataclasses import fields
 from rest_framework import serializers
 
-from .models import ApartmentImage, Location, Apartment, ApartmentType
+from .models import ApartmentFeature, ApartmentImage, Location, Apartment, ApartmentType
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -23,11 +23,17 @@ class ApartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Apartment
         fields = ["id", "rooms", "bedrooms", "kitchen", "garage",
-                  "living_room", "furnishing", "price", "apartment_type", "location", "apartment_image" ]
+                  "living_room", "furnishing", "price", "apartment_type", "location", "apartment_image", "name", "bathrooms", "description", "features" ]
         depth = 1
 
 
 class ApartmentImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApartmentImage
+        fields = "__all__"
+
+
+class ApartmentFeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApartmentFeature
         fields = "__all__"
