@@ -13,7 +13,7 @@ export interface Apartment {
     furnishing?: boolean;
     kitchen?: boolean
     garage?: boolean
-    apartment_features: ApartmentFeature[];
+    features: ApartmentFeature[];
 }
 
 export interface ApartmentLocation {
