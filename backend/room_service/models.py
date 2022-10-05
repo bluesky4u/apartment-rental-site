@@ -34,9 +34,19 @@ class Apartment(models.Model):
         to=ApartmentType, on_delete=models.CASCADE)
     location = models.ForeignKey(to=Location, on_delete=models.CASCADE)
 
+    description = models.TextField(default="")
+    features = models.ManyToManyField(to="ApartmentFeature", blank=True)
+
 
 class ApartmentImage(models.Model):
     
     apartment = models.ForeignKey(to=Apartment, on_delete=models.CASCADE, related_name="apartment_image")
     image = models.ImageField(upload_to="apartment_images")
-    
+
+
+class ApartmentFeature(models.Model):
+
+    feature = models.CharField(max_length=200, default="")
+
+    def __str__(self):
+        return self.feature
