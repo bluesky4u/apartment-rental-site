@@ -10,6 +10,11 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ApartmentFeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApartmentFeature
+        fields = "__all__"
+
 class ApartmentTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApartmentType
@@ -17,9 +22,7 @@ class ApartmentTypeSerializer(serializers.ModelSerializer):
 
 
 class ApartmentSerializer(serializers.ModelSerializer):
-    # apartment_image = serializers.HyperlinkedRelatedField(
-    #     many=True, read_only=True, view_name="room-service:apartment-image-view-set", allow_null=True)
-
+    features = ApartmentFeatureSerializer(many=True, read_only=False)
     class Meta:
         model = Apartment
         fields = ["id", "rooms", "bedrooms", "kitchen", "garage",
@@ -33,7 +36,3 @@ class ApartmentImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ApartmentFeatureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ApartmentFeature
-        fields = "__all__"
