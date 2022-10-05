@@ -46,7 +46,7 @@ class ApartmentImage(models.Model):
 
 class ApartmentFeature(models.Model):
 
-    feature = models.CharField(max_length=200, default="")
+    name = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return self.feature
