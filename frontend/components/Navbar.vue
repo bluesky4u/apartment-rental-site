@@ -1,6 +1,6 @@
 <template>
     <nav ref="nav" class="flex flex-row justify-between items-center sticky inset-x-0 top-0 py-5 z-50 bg-white">
-        <span class="m-0 text-2xl">
+        <span class="m-0 pl-5 text-2xl">
             <NuxtLink to="/">Logo</NuxtLink>
         </span>
         <label for="search" class="hidden">Search</label>

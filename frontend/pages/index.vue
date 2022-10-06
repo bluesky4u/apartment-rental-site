@@ -25,309 +25,11 @@ onMounted(() => {
 })
 
 
-const apartments: Apartment[] = [
-    {
-        id: 1,
-        name: 'Apartment 1',
-        location: {
-            id: 1,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 100,
-        bedrooms: 2,
-        bathrooms: 2,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 2,
-        name: 'Apartment 2',
-        location: {
-            id: 2,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 200,
-        bedrooms: 3,
-        bathrooms: 3,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 3,
-        name: 'Apartment 3',
-        location: {
-            id: 3,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 300,
-        bedrooms: 4,
-        bathrooms: 4,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 4,
-        name: 'Apartment 4',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 5,
-        name: 'Apartment 5',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 6,
-        name: 'Apartment 6',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 7,
-        name: 'Apartment 7',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 8,
-        name: 'Apartment 8',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 9,
-        name: 'Apartment 9',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 10,
-        name: 'Apartment 10',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-]
-
-const apartmentTypes: ApartmentType[] = [
-    {
-        id: 1,
-        name: "Condo",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 2,
-        name: "Villas",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 3,
-        name: "Townhouse",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 4,
-        name: "Apartment",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 5,
-        name: "House",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 6,
-        name: "Studio",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 7,
-        name: "Loft",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 8,
-        name: "Bed & Breakfast",
-        image: "https://picsum.photos/200/300"
-    },
-    {
-        id: 9,
-        name: "Boat",
-        image: "https://picsum.photos/200/300"
-    }
-]
-
+const apartments = ref<Apartment[]>([])
 
 const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartments')
+apartments.value = data.value
+
 </script>
 
 
@@ -336,7 +38,7 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
         <header class="flex flex-col w-full" ref="header">
             <nav ref="nav" class="flex flex-row justify-between items-center fixed inset-x-0 top-0 py-5 z-50"
                 :class="navSticky ? 'bg-white' : 'bg-transparent'">
-                <span class="m-0 text-2xl">
+                <span class="m-0 pl-5 text-2xl">
                     <NuxtLink to="/">Logo</NuxtLink>
                 </span>
                 <label for="search" class="hidden">Search</label>
@@ -356,27 +58,39 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
         <main>
             <section class="mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Explore rentals in Accra</h2>
-                <CustomCarousel :data="apartments">
-                    <template #item="apartment: Apartment">
-                        <div class="flex flex-col items-center mb-10">
-                            <NuxtLink :to="`/apartment/` + apartment.id">
-                                <div>
-                                    <img :src="apartment.image[0].image" alt="Apartment" class="apartment-image">
-                                </div>
-                                <div class="pt-2">
-                                    <span class="text-xl">{{ apartment.name }}</span>
-                                    <p class="">{{ apartment.location.city }}</p>
-                                    <p class="">{{ apartment.price }}</p>
-                                </div>
-                            </NuxtLink>
+                <ClientOnly fallbackTag="div">
+                    <CustomCarousel :data="apartments">
+                        <template #item="apartment: Apartment">
+                            <div class="flex flex-col items-center mb-10">
+                                <NuxtLink :to="`/apartment/${apartment.id}`">
+                                    <div>
+                                        <img :src="apartment.apartment_image ? apartment.apartment_image[0].image : `https://picsum.photos/200/300`"
+                                            alt="Apartment" class="apartment-image">
+                                    </div>
+                                    <div class="pt-2">
+                                        <span class="text-xl">{{ apartment.name }}</span>
+                                        <p class="">{{ apartment.location.city }}</p>
+                                        <p class="">{{ apartment.price }}</p>
+                                    </div>
+                                </NuxtLink>
+                            </div>
+                        </template>
+                    </CustomCarousel>
+                    <template #fallback>
+                        <div v-for="apartment of apartments">
+                            <h2>{{apartment.name}}</h2>
+                            <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} image`">
+                            <p>{{apartment.price}}</p>
+                            <p>{{apartment.location.city}}</p>
                         </div>
                     </template>
-                </CustomCarousel>
+                </ClientOnly>
+
             </section>
 
             <section class="mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Browse apartments by type</h2>
-                <CustomCarousel :data="apartmentTypes">
+                <!-- <CustomCarousel :data="apartmentTypes">
                     <template #item="apartment_type: ApartmentType">
                         <div class="flex flex-col items-center mb-10">
                             <NuxtLink :to="`type/${1}`">
@@ -387,7 +101,7 @@ const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartment
                             </NuxtLink>
                         </div>
                     </template>
-                </CustomCarousel>
+                </CustomCarousel> -->
             </section>
 
             <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">

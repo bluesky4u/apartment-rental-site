@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -41,12 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
     'rest_framework',
+    'django_filters',
 
     'room_service.apps.RoomServiceConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,6 +77,11 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 

@@ -2,6 +2,8 @@ from django import views
 from django.shortcuts import render
 from rest_framework import viewsets
 
+from .filters import ApartmentFilter
+
 from .models import ApartmentFeature, ApartmentImage, Location, ApartmentType, Apartment
 from .serializers import ApartmentFeatureSerializer, ApartmentImageSerializer, LocationSerializer, ApartmentSerializer, ApartmentTypeSerializer
 
@@ -19,6 +21,7 @@ class ApartmentTypeViewSet(viewsets.ModelViewSet):
 class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = Apartment.objects.all()
     serializer_class = ApartmentSerializer
+    filterset_class = ApartmentFilter
 
 
 class ApartmentImageViewSet(viewsets.ModelViewSet):

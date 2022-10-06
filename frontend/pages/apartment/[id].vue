@@ -12,181 +12,26 @@ import CalenderIcon from '../../components/svgs/CalenderIcon.vue';
 
 const route = useRoute()
 
-const apartmentDetails: Apartment = {
-    id: 0,
-    name: route.fullPath,
-    location: {
-        city: "Kasoa",
-        id: 1,
-        lat: 2,
-        long: 3
-    },
-    price: 4999.99,
-    bedrooms: 3,
-    bathrooms: 2,
-    description: '',
-    image: [
-        { id: 1, image: "https://picsum.photos/900/500" },
-        { id: 2, image: "https://picsum.photos/200/300" },
-        { id: 3, image: "https://picsum.photos/200/300" },
-        { id: 4, image: "https://picsum.photos/200/300" },
-        { id: 5, image: "https://picsum.photos/200/300" },
-    ]
-}
+const { data: apartmentDetails } = await useFetch<Apartment>(`http://localhost:8000/v1/apartments/${route.params.id}`, { key: `apartments_${route.params.id}` })
+const { data: proximityApartments, pending: loadingProximityApartments } = useLazyFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`,
+    {
+        key: `proximity_apartments_${route.params.id}`,
+        params: {
+            'location': apartmentDetails.value?.location.id,
+        }
+    }
+)
+const { data: similarApartments, pending: loadingSimilarApartments } = useLazyFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`,
+    {
+        key: `similar_apartments_${route.params.id}`,
+        params: {
+            'apartment_type': apartmentDetails.value?.apartment_type.id,
+            'rooms': apartmentDetails.value?.rooms,
+        }
+    }
+)
 
 
-const proximityApartments: Apartment[] = [
-    {
-        id: 1,
-        name: 'Apartment 1',
-        location: {
-            id: 1,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 100,
-        bedrooms: 2,
-        bathrooms: 2,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 2,
-        name: 'Apartment 2',
-        location: {
-            id: 2,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 200,
-        bedrooms: 3,
-        bathrooms: 3,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 3,
-        name: 'Apartment 3',
-        location: {
-            id: 3,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 300,
-        bedrooms: 4,
-        bathrooms: 4,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 4,
-        name: 'Apartment 4',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 5,
-        name: 'Apartment 5',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-    {
-        id: 6,
-        name: 'Apartment 6',
-        location: {
-            id: 4,
-            city: 'New York',
-            long: -73.935242,
-            lat: 40.730610
-        },
-        price: 400,
-        bedrooms: 5,
-        bathrooms: 5,
-        description: 'This is a description',
-        image: [
-            {
-                id: 1,
-                image: 'https://picsum.photos/200/300'
-            },
-            {
-                id: 2,
-                image: 'https://picsum.photos/200/300'
-            }
-        ],
-        availability: new Date()
-    },
-]
 
 const features = ["School", "Bathroom", "A whole", "inside bar", "alley"]
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
@@ -202,7 +47,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                 <main>
                     <div class="swiper-container my-5">
                         <Swiper :modules="modules" navigation :pagination="{ clickable: true }" :centeredSlides="true">
-                            <template v-for="image in apartmentDetails.image">
+                            <template v-for="image in apartmentDetails.apartment_image">
                                 <SwiperSlide id="slide" class="flex justify-center align-center">
                                     <img :src="image.image" :alt="apartmentDetails.name">
                                 </SwiperSlide>
@@ -211,7 +56,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                     </div>
                     <div class="my-5">
                         <h2 class="text-xl">{{ apartmentDetails.name }}</h2>
-                        <h1 class="text-4xl">{{ apartmentDetails.price }} GHS</h1>
+                        <h1 class="text-4xl">GHS {{ apartmentDetails.price }}</h1>
                         <div class="flex items-center mt-2">
                             <LocationIcon />
                             <span class="ml-1">{{ apartmentDetails.location.city }}</span>
@@ -237,29 +82,11 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                     <div class="my-10">
                         <h1 class="text-3xl">Features and description</h1>
                         <ul class="columns-2" id="features">
-                            <li v-for="feature of features">{{ feature }}</li>
+                            <li v-for="feature of apartmentDetails.features">{{ feature.name }}</li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ut quia eum optio placeat
-                            voluptate nostrum sequi, sapiente exercitationem atque illo dolorum labore at est maxime
-                            nemo eius pariatur totam facere cum dolorem, dicta nesciunt laboriosam. Animi repellendus
-                            quas quasi voluptates, sequi impedit sint consectetur laborum deleniti quis quaerat
-                            consequuntur? Nemo perspiciatis eius iure a molestias quas rerum odit, repellat eum optio
-                            voluptates aut alias ipsum, fuga blanditiis impedit? Sunt error illo officiis consequuntur
-                            at nostrum vel, optio nobis consequatur, quos perferendis? Iusto repellendus provident
-                            architecto harum fugiat voluptatem modi quibusdam rerum necessitatibus minus itaque a, porro
-                            eveniet ex, amet nihil. Quam suscipit repellendus temporibus a repudiandae mollitia hic
-                            aliquid sapiente voluptatibus facere earum praesentium officiis libero, esse ipsam dolorem
-                            soluta quos architecto est natus necessitatibus saepe! Ratione quas laudantium illo dolorum
-                            possimus veritatis exercitationem repudiandae iste eum quaerat natus corrupti, id commodi
-                            consequuntur sed facilis eaque nisi quam accusantium modi recusandae, esse deserunt? Ratione
-                            dolor eius omnis neque repudiandae. Ullam repellendus, similique, a neque laudantium ducimus
-                            ipsa veritatis facilis temporibus adipisci perferendis ea cumque, quod reprehenderit aliquid
-                            repudiandae ipsum cupiditate? Debitis vel perspiciatis nam corporis. Eligendi eum ipsum
-                            dolores impedit, eius voluptas modi quos nisi officia minima. Minus provident fugiat
-                            repellendus pariatur, culpa doloribus cumque est, architecto expedita quibusdam fuga sed,
-                            tenetur nemo amet ratione odio quidem dicta porro quas ea tempore illo incidunt.
-                            Consequuntur tempora ex quae, unde voluptas quod itaque est sequi obcaecati dolorem aut nam
-                            optio dignissimos temporibus, maiores ad praesentium. Tempora esse beatae repellat id.</p>
+                        <p>
+                            {{apartmentDetails.description.length ? apartmentDetails.description : 'Listing has no description' }}
+                        </p>
                     </div>
 
                 </main>
@@ -274,41 +101,48 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
             </div>
             <div>
                 <span class="text-2xl py-2">In close proximity</span>
-                <CustomCarousel :data="proximityApartments">
-                    <template #item="apartment: Apartment">
-                        <div class="flex flex-col items-center mb-10">
-                            <NuxtLink :to="`/apartment/` + apartment.id">
-                                <div>
-                                    <img :src="apartment.image[0].image" alt="Apartment" class="apartment-image">
-                                </div>
-                                <div class="pt-2">
-                                    <span class="text-xl">{{ apartment.name }}</span>
-                                    <p class="">{{ apartment.location.city }}</p>
-                                    <p class="">{{ apartment.price }}</p>
-                                </div>
-                            </NuxtLink>
-                        </div>
-                    </template>
-                </CustomCarousel>
+                <template v-if="loadingProximityApartments"></template>
+                <template v-else>
+                    <CustomCarousel :data="proximityApartments">
+                        <template #item="apartment: Apartment">
+                            <div class="flex flex-col items-center mb-10">
+                                <NuxtLink :to="`/apartment/` + apartment.id">
+                                    <div>
+                                        <img :src="apartment.apartment_image[0].image" alt="Apartment"
+                                            class="apartment-image">
+                                    </div>
+                                    <div class="pt-2">
+                                        <span class="text-xl">{{ apartment.name }}</span>
+                                        <p class="">{{ apartment.location.city }}</p>
+                                        <p class="">{{ apartment.price }}</p>
+                                    </div>
+                                </NuxtLink>
+                            </div>
+                        </template>
+                    </CustomCarousel>
+                </template>
             </div>
             <div>
                 <span class="text-2xl py-2">Similar Apartments</span>
-                <CustomCarousel :data="proximityApartments">
-                    <template #item="apartment: Apartment">
-                        <div class="flex flex-col items-center mb-10">
-                            <NuxtLink :to="`/apartment/` + apartment.id">
-                                <div>
-                                    <img :src="apartment.image[0].image" alt="Apartment" class="apartment-image">
-                                </div>
-                                <div class="pt-2">
-                                    <span class="text-xl">{{ apartment.name }}</span>
-                                    <p class="">{{ apartment.location.city }}</p>
-                                    <p class="">{{ apartment.price }}</p>
-                                </div>
-                            </NuxtLink>
-                        </div>
-                    </template>
-                </CustomCarousel>
+                <template v-if="loadingSimilarApartments"></template>
+                <template v-else>
+                    <CustomCarousel :data="similarApartments">
+                        <template #item="apartment: Apartment">
+                            <div class="flex flex-col items-center mb-10">
+                                <NuxtLink :to="`/apartment/` + apartment.id">
+                                    <div>
+                                        <img :src="apartment.apartment_image[0].image" alt="Apartment" class="apartment-image">
+                                    </div>
+                                    <div class="pt-2">
+                                        <span class="text-xl">{{ apartment.name }}</span>
+                                        <p class="">{{ apartment.location.city }}</p>
+                                        <p class="">{{ apartment.price }}</p>
+                                    </div>
+                                </NuxtLink>
+                            </div>
+                        </template>
+                    </CustomCarousel>
+                </template>
             </div>
         </div>
     </div>
