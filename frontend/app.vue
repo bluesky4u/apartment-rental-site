@@ -10,6 +10,7 @@
         }
       </Style>
     </Head>
+    <NuxtLoadingIndicator />
     <NuxtPage />
     <Footer />
   </div>
