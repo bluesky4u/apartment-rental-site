@@ -25,10 +25,12 @@ onMounted(() => {
 })
 
 
-const apartments = ref<Apartment[]>([])
-
-const { data } = await useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartments')
-apartments.value = data.value
+const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
+    [
+        useFetch<ApartmentType[]>('http://localhost:8000/v1/apartment-type/'),
+        useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartments/')
+    ]
+)
 
 </script>
 
@@ -43,7 +45,7 @@ apartments.value = data.value
                 </span>
                 <label for="search" class="hidden">Search</label>
                 <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
-                    placeholder="Enter A City/Region Here">
+                    placeholder="Enter A City/Region/Apartment Here">
 
             </nav>
             <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40">
@@ -90,18 +92,26 @@ apartments.value = data.value
 
             <section class="mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Browse apartments by type</h2>
-                <!-- <CustomCarousel :data="apartmentTypes">
-                    <template #item="apartment_type: ApartmentType">
-                        <div class="flex flex-col items-center mb-10">
-                            <NuxtLink :to="`type/${1}`">
-                                <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
-                                <div class="pt-2">
-                                    <span class="text-xl">{{ apartment_type.name }}</span>
-                                </div>
-                            </NuxtLink>
+                <ClientOnly fallbackTag="div">
+                    <CustomCarousel :data="apartmentTypes">
+                        <template #item="apartment_type: ApartmentType">
+                            <div class="flex flex-col items-center mb-10">
+                                <NuxtLink :to="`type/${apartment_type.id}`">
+                                    <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
+                                    <div class="pt-2">
+                                        <span class="text-xl">{{ apartment_type.name }}</span>
+                                    </div>
+                                </NuxtLink>
+                            </div>
+                        </template>
+                    </CustomCarousel>
+                    <template #fallback>
+                        <div v-for="apartmentType of apartmentTypes">
+                            <h2>{{apartmentType.name}}</h2>
+                            <img :src="apartmentType.image" :alt="`${apartmentType.name} image`">
                         </div>
                     </template>
-                </CustomCarousel> -->
+                </ClientOnly>
             </section>
 
             <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
