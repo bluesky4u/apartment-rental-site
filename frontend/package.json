@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "defu": "^6.1.0",
+    "leaflet": "^1.9.2",
     "primeicons": "^5.0.0",
     "primevue": "^3.15.0",
     "swiper": "^8.3.1"
