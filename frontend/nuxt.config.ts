@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         'primevue/resources/themes/saga-blue/theme.css',
         'primevue/resources/primevue.css',
         'primeicons/primeicons.css',
+        'leaflet/dist/leaflet.css',
         'swiper/css'
     ],
     build: {
@@ -12,5 +13,5 @@ export default defineNuxtConfig({
             postcssOptions: require('./postcss.config.js'),
         },
         transpile: ['primevue'],
-    }
+    },
 })
