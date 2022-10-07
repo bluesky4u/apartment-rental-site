@@ -39,13 +39,12 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
     <div id="main" ref="main">
         <header class="flex flex-col w-full" ref="header">
             <nav ref="nav" class="flex flex-row justify-between items-center fixed inset-x-0 top-0 py-5 z-50"
-                :class="navSticky ? 'bg-white' : 'bg-transparent'">
+                :class="navSticky ? 'bg-white' : 'hidden'">
                 <span class="m-0 pl-5 text-2xl">
                     <NuxtLink to="/">Logo</NuxtLink>
                 </span>
                 <label for="search" class="hidden">Search</label>
-                <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
-                    placeholder="Enter A City/Region/Apartment Here">
+                <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4" placeholder="Search for a property">
 
             </nav>
             <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40">
@@ -96,7 +95,7 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
                     <CustomCarousel :data="apartmentTypes">
                         <template #item="apartment_type: ApartmentType">
                             <div class="flex flex-col items-center mb-10">
-                                <NuxtLink :to="`type/${apartment_type.id}`">
+                                <NuxtLink :to="`/type/${apartment_type.id}`">
                                     <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
                                     <div class="pt-2">
                                         <span class="text-xl">{{ apartment_type.name }}</span>
@@ -116,7 +115,7 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
 
             <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
                 <h2 class="text-3xl mb-16">Let's help you find your new home</h2>
-                <Button label="Explore all properties" class=" p-button-rounded  p-button-outlined" @click="" />
+                <NuxtLink to="/all-properties/" class="border border-blue-500 text-blue-500 px-5 py-2 rounded">Explore all properties</NuxtLink>
             </section>
 
             <section class="mx-20 my-5">
