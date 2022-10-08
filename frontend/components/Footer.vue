@@ -12,7 +12,7 @@
                 <label for="email" class="hidden">Search</label>
                 <input type="email" id="email" class="h-10 w-4/5 mr-2 bg-[#374151] pl-4 rounded-full text-white"
                     placeholder="Email Address">
-                <Button label="Submit" class="p-button-outlined p-button-rounded" @click="" />
+                <button type="button" class="border-blue-500 border px-3 rounded">Submit</button>
             </div>
         </div>
     </footer>
