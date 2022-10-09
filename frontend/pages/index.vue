@@ -32,29 +32,22 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
     ]
 )
 
+definePageMeta({
+    layout: false
+})
 </script>
 
 
 <template>
-    <div id="main" ref="main">
-        <header class="flex flex-col w-full" ref="header">
-            <nav ref="nav" class="flex flex-row justify-between items-center fixed inset-x-0 top-0 py-5 z-50"
-                :class="navSticky ? 'bg-white' : 'hidden'">
-                <span class="m-0 pl-5 text-2xl">
-                    <NuxtLink to="/">Logo</NuxtLink>
-                </span>
-                <label for="search" class="hidden">Search</label>
-                <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4" placeholder="Search for a property">
-
-            </nav>
-            <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40">
-                <span class="m-0 text-2xl">Logo</span>
-                <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
-                <label for="search" class="hidden">Search</label>
-                <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
-                    placeholder="Enter A City/Region Here">
-            </div>
-        </header>
+    <div id="main">
+        <Navbar :hidden="!navSticky" />
+        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40">
+            <span class="m-0 text-2xl">Logo</span>
+            <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
+            <label for="search" class="hidden">Search</label>
+            <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
+                placeholder="Enter A City/Region Here">
+        </div>
 
         <main>
             <section class="mx-20 py-4">
@@ -115,7 +108,8 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
 
             <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
                 <h2 class="text-3xl mb-16">Let's help you find your new home</h2>
-                <NuxtLink to="/all-properties/" class="border border-blue-500 text-blue-500 px-5 py-2 rounded">Explore all properties</NuxtLink>
+                <NuxtLink to="/all-properties/" class="border border-blue-500 text-blue-500 px-5 py-2 rounded">Explore
+                    all properties</NuxtLink>
             </section>
 
             <section class="mx-20 my-5">
@@ -151,6 +145,6 @@ const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
                 </div>
             </section>
         </main>
-
+        <Footer />
     </div>
 </template>

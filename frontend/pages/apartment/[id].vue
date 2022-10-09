@@ -36,12 +36,12 @@ const { data: similarApartments, pending: loadingSimilarApartments } = useLazyFe
 const features = ["School", "Bathroom", "A whole", "inside bar", "alley"]
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
 
+
 </script>
 
 
 <template>
     <div>
-        <Navbar />
         <div class="mx-20 mt-10">
             <div id="apartment-detail-view">
                 <main>
@@ -85,7 +85,10 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                             <li v-for="feature of apartmentDetails.features">{{ feature.name }}</li>
                         </ul>
                         <p>
-                            {{apartmentDetails.description.length ? apartmentDetails.description : 'Listing has no description' }}
+                            {{
+                            apartmentDetails.description.length ?
+                            apartmentDetails.description : 'Listing has no description'
+                            }}
                         </p>
                     </div>
 
@@ -131,7 +134,8 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                             <div class="flex flex-col items-center mb-10">
                                 <NuxtLink :to="`/apartment/` + apartment.id">
                                     <div>
-                                        <img :src="apartment.apartment_image[0].image" alt="Apartment" class="apartment-image">
+                                        <img :src="apartment.apartment_image[0].image" alt="Apartment"
+                                            class="apartment-image">
                                     </div>
                                     <div class="pt-2">
                                         <span class="text-xl">{{ apartment.name }}</span>
