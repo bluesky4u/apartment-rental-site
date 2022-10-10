@@ -1,6 +1,6 @@
 from django import views
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 
 from .filters import ApartmentFilter
 
@@ -22,6 +22,7 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = Apartment.objects.all()
     serializer_class = ApartmentSerializer
     filterset_class = ApartmentFilter
+    search_fields = ['name', 'apartment_type__name', 'location__city', 'location__address']
 
 
 class ApartmentImageViewSet(viewsets.ModelViewSet):
