@@ -10,14 +10,13 @@ withDefaults(defineProps<Props>(), {
 
 const searchField = ref<string>("")
 
-const search = async (query: string) => {
-    console.log(query)
+const search = async (searchQuery: string) => {
     await navigateTo(
         {
             path: '/search',
             query:
             {
-                query: query
+                searchQuery: searchQuery
             }
         })
 }
