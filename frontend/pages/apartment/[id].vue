@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Apartment, ApartmentImage } from '~~/composables/types';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Apartment } from '~~/composables/types';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
@@ -33,8 +33,7 @@ const { data: similarApartments, pending: loadingSimilarApartments } = useLazyFe
 
 
 
-const features = ["School", "Bathroom", "A whole", "inside bar", "alley"]
-const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
+const modules = [Navigation, Pagination, Scrollbar, A11y]
 
 
 </script>
@@ -108,19 +107,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                 <template v-else>
                     <CustomCarousel :data="proximityApartments">
                         <template #item="apartment: Apartment">
-                            <div class="flex flex-col items-center mb-10">
-                                <NuxtLink :to="`/apartment/` + apartment.id">
-                                    <div>
-                                        <img :src="apartment.apartment_image[0].image" alt="Apartment"
-                                            class="apartment-image">
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="text-xl">{{ apartment.name }}</span>
-                                        <p class="">{{ apartment.location.city }}</p>
-                                        <p class="">{{ apartment.price }}</p>
-                                    </div>
-                                </NuxtLink>
-                            </div>
+                            <ApartmentCarouselItem :apartment="apartment" />
                         </template>
                     </CustomCarousel>
                 </template>
@@ -131,19 +118,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
                 <template v-else>
                     <CustomCarousel :data="similarApartments">
                         <template #item="apartment: Apartment">
-                            <div class="flex flex-col items-center mb-10">
-                                <NuxtLink :to="`/apartment/` + apartment.id">
-                                    <div>
-                                        <img :src="apartment.apartment_image[0].image" alt="Apartment"
-                                            class="apartment-image">
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="text-xl">{{ apartment.name }}</span>
-                                        <p class="">{{ apartment.location.city }}</p>
-                                        <p class="">{{ apartment.price }}</p>
-                                    </div>
-                                </NuxtLink>
-                            </div>
+                            <ApartmentCarouselItem :apartment="apartment" />
                         </template>
                     </CustomCarousel>
                 </template>
