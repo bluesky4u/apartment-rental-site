@@ -17,7 +17,7 @@ const { data: proximityApartments, pending: loadingProximityApartments } = useLa
     {
         key: `proximity_apartments_${route.params.id}`,
         params: {
-            'location': apartmentDetails.value?.location.id,
+            'location__city': apartmentDetails.value?.location.city,
         }
     }
 )
