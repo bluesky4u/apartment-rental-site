@@ -44,7 +44,7 @@ definePageMeta({
         <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40" id="hero">
             <span class="m-0 text-2xl">Logo</span>
             <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
-            <SearchBox styleClass="h-10 w-2/5 bg-[#374151] pl-4" /> 
+            <SearchBox styleClass="h-10 w-2/5 bg-[#374151] pl-4" />
         </div>
 
         <main>
@@ -75,7 +75,8 @@ definePageMeta({
                         <template #item="apartment_type: ApartmentType">
                             <div class="flex flex-col items-center mb-10">
                                 <NuxtLink :to="`/type/${apartment_type.id}`">
-                                    <div><img :src="apartment_type.image" :alt="apartment_type.name"></div>
+                                    <div><img :src="apartment_type.image" :alt="apartment_type.name"
+                                            class="md:h-[15rem] h-[10rem] object-cover object-center"></div>
                                     <div class="pt-2">
                                         <span class="text-xl">{{ apartment_type.name }}</span>
                                     </div>
