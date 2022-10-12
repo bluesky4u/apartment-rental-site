@@ -41,12 +41,10 @@ definePageMeta({
 <template>
     <div id="main">
         <Navbar :hidden="!navSticky" />
-        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40">
+        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40" id="hero">
             <span class="m-0 text-2xl">Logo</span>
             <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
-            <label for="search" class="hidden">Search</label>
-            <input type="search" id="search" class="h-10 w-2/5 bg-[#374151] pl-4"
-                placeholder="Enter A City/Region Here">
+            <SearchBox styleClass="h-10 w-2/5 bg-[#374151] pl-4" /> 
         </div>
 
         <main>

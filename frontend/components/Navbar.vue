@@ -8,19 +8,6 @@ withDefaults(defineProps<Props>(), {
     hidden: false
 })
 
-const searchField = ref<string>("")
-
-const search = async (searchQuery: string) => {
-    await navigateTo(
-        {
-            path: '/search',
-            query:
-            {
-                searchQuery: searchQuery
-            }
-        })
-}
-
 </script>
 
 <template>
@@ -29,10 +16,6 @@ const search = async (searchQuery: string) => {
         <span class="m-0 pl-5 text-2xl">
             <NuxtLink to="/">Logo</NuxtLink>
         </span>
-        <label for="search" class="hidden">Search</label>
-        <form @submit.prevent="search(searchField)" class="h-10 w-2/5">
-            <input type="search" id="search" placeholder="Enter A City/Region Here"
-                class="bg-[#374151] w-full pl-4 h-full" v-model="searchField">
-        </form>
+        <SearchBox />
     </nav>
 </template>
