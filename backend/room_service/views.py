@@ -4,8 +4,8 @@ from rest_framework import viewsets, filters
 
 from .filters import ApartmentFilter
 
-from .models import ApartmentFeature, ApartmentImage, Location, ApartmentType, Apartment
-from .serializers import ApartmentFeatureSerializer, ApartmentImageSerializer, LocationSerializer, ApartmentSerializer, ApartmentTypeSerializer
+from .models import ApartmentContact, ApartmentFeature, ApartmentImage, Location, ApartmentType, Apartment
+from .serializers import ApartmentContactSerializer, ApartmentFeatureSerializer, ApartmentImageSerializer, LocationSerializer, ApartmentSerializer, ApartmentTypeSerializer
 
 
 class LocationViewSet(viewsets.ModelViewSet):
@@ -34,3 +34,8 @@ class ApartmentImageViewSet(viewsets.ModelViewSet):
 class ApartmentFeatureViewSet(viewsets.ModelViewSet):
     queryset = ApartmentFeature.objects.all()
     serializer_class = ApartmentFeatureSerializer
+
+
+class ApartmentContactViewSet(viewsets.ModelViewSet):
+    queryset = ApartmentContact.objects.all()
+    serializer_class = ApartmentContactSerializer
