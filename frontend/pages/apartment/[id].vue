@@ -12,7 +12,7 @@ import CalenderIcon from '../../components/svgs/CalenderIcon.vue';
 
 const route = useRoute()
 
-const { data: apartmentDetails } = await useFetch<Apartment>(`http://localhost:8000/v1/apartments/${route.params.id}`, { key: `apartments_${route.params.id}` })
+const { data: apartmentDetails } = await fetchApartmentDetails(route.params.id.toString(), { key: `apartments_${route.params.id}` })
 const { data: proximityApartments, pending: loadingProximityApartments } = fetchApartments(
     {
         key: `proximity_apartments_${route.params.id}`,

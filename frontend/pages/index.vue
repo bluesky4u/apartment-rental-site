@@ -25,12 +25,7 @@ onMounted(() => {
 })
 
 
-const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
-    [
-        useFetch<ApartmentType[]>('http://localhost:8000/v1/apartment-type/'),
-        fetchApartments()
-    ]
-)
+const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all([fetchApartmentTypes(), fetchApartments()])
 
 definePageMeta({
     layout: false
@@ -41,7 +36,8 @@ definePageMeta({
 <template>
     <div id="main">
         <Navbar :hidden="!navSticky" />
-        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40" id="hero">
+        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40"
+            id="hero">
             <span class="m-0 text-2xl">Logo</span>
             <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
             <SearchBox styleClass="h-10 w-2/5 pl-4" />
@@ -59,7 +55,7 @@ definePageMeta({
                     <template #fallback>
                         <div v-for="apartment of apartments">
                             <h2>{{apartment.name}}</h2>
-                            <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} image`">
+                            <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} image`" style="height: 50px">
                             <p>{{apartment.price}}</p>
                             <p>{{apartment.location.city}}</p>
                         </div>
