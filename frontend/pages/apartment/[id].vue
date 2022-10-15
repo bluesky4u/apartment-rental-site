@@ -63,7 +63,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
                         <div class="flex">
                             <div class="flex items-center">
                                 <BedroomIcon />
-                                <span class="ml-2">{{ apartmentDetails.bedrooms }} Bedrooms</span>
+                                <span class="ml-2">{{ apartmentDetails.rooms }} Rooms</span>
                             </div>
                             <div class="flex items-center ml-10">
                                 <BathIcon />

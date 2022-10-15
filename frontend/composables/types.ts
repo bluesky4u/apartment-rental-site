@@ -4,7 +4,6 @@ export interface Apartment {
     name: string;
     location: ApartmentLocation;
     price: number;
-    bedrooms: number;
     bathrooms: number;
     description: string;
     apartment_image: ApartmentImage[];

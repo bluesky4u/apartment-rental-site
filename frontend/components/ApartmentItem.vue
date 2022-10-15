@@ -20,7 +20,7 @@ const props = defineProps<
                 <div>
                     <h2 class="text-xl">GHS {{apartment.price}}</h2>
                     <div class="text-sm text-zinc-500 mb-5">
-                        <span>{{apartment.bedrooms}} bedrooms</span> •
+                        <span>{{apartment.rooms}} rooms</span> •
                         <span>{{apartment.bathrooms}} bathrooms</span>
                     </div>
                     <p class="font-semibold">{{apartment.name}}</p>

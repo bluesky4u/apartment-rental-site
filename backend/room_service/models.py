@@ -1,4 +1,3 @@
-from email.policy import default
 from django.db import models
 from django.utils.timezone import now
 
@@ -22,7 +21,7 @@ class Apartment(models.Model):
     name = models.CharField(max_length=200, default="")
 
     rooms = models.IntegerField(default=0)
-    bedrooms = models.IntegerField(default=0)
+    # bedrooms = models.IntegerField(default=0) deleting this because rooms just mean bedrooms
     bathrooms = models.IntegerField(default=0)
 
     kitchen = models.BooleanField(default=False)
