@@ -14,6 +14,7 @@ export interface Apartment {
     kitchen?: boolean
     garage?: boolean
     features: ApartmentFeature[];
+    apartment_contact?: ApartmentContact;
 }
 
 export interface ApartmentLocation {
@@ -38,4 +39,10 @@ export interface ApartmentImage {
 export interface ApartmentFeature {
     id: number;
     name: string;
+}
+
+export interface ApartmentContact {
+    id: number
+    email: string
+    phone: string
 }
