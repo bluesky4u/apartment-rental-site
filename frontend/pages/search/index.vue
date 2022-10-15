@@ -10,7 +10,7 @@ const route = useRoute()
 const apartments = ref<Apartment[]>([])
 
 const search = async (query: string) => {
-    await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { params: { search: query }, key: `apartments?${query}` })
+    await fetchApartments({ params: { search: query }, key: `apartments?${query}`})
         .then((res) => {
             apartments.value = res.data.value
         })

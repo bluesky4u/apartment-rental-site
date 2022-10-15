@@ -28,7 +28,7 @@ onMounted(() => {
 const [{ data: apartmentTypes }, { data: apartments }] = await Promise.all(
     [
         useFetch<ApartmentType[]>('http://localhost:8000/v1/apartment-type/'),
-        useFetch<Apartment[]>('http://127.0.0.1:8000/v1/apartments/')
+        fetchApartments()
     ]
 )
 
