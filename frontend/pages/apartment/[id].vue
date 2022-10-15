@@ -93,11 +93,18 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 
                 </main>
                 <aside>
-                    <div class="flex flex-col border p-3 rounded text-center sticky top-20 md:ml-10">
+                    <div class="flex flex-col border p-3 rounded text-center sticky top-20 md:ml-10 bg-[#fafafa] shadow-md rounded-lg">
                         <span class="my-2">Contact this Property</span>
-                        <button type="button" class="bg-red-200 py-2 my-2">Request Tour</button>
-                        <button type="button" class="py-2 my-2 border border-red-200">Send Message</button>
-                        <span class="my-2">00 23 434 545</span>
+                        <form>
+                            <div class="flex flex-col">
+                                <input type="text" placeholder="* Name" class="border p-2 rounded my-2" required>
+                                <input type="email" placeholder="* Email" class="border p-2 rounded my-2" required>
+                                <input type="tel" placeholder="Phone (Optional)" class="border p-2 rounded my-2">
+                                <textarea :placeholder="`Hello, I'd like to learn more about ${apartmentDetails.name}`" class="border p-2 rounded my-2 resize-none" rows="3" required></textarea>
+                                <button class="bg-red-200 p-2 rounded my-2">Send Message</button>
+                            </div>
+                        </form>
+                        <a :href="`tel:${apartmentDetails.apartment_contact.phone}`" class="my-2 border py-2">{{apartmentDetails.apartment_contact.phone}}</a>
                     </div>
                 </aside>
             </div>
