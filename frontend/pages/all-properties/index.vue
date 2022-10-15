@@ -57,10 +57,8 @@ watch(params, async (value) => {
             </div>
         </template>
 
-        <template v-if="apartments.length">
-            <template v-for="apartment of apartments">
-                <ApartmentItem :apartment="apartment" />
-            </template>
+        <template v-for="apartment of apartments">
+            <ApartmentItem :apartment="apartment" />
         </template>
 
         <template #map>
