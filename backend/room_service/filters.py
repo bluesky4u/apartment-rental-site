@@ -5,6 +5,10 @@ from .models import Apartment
 
 class ApartmentFilter(filters.FilterSet):
 
+    max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
+    min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
+    min_room = filters.NumberFilter(field_name="rooms", lookup_expr="gte")
+
     class Meta:
         model = Apartment
         fields = '__all__'
