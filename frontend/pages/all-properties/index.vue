@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Apartment } from '~~/composables/types';
 
 definePageMeta({
     title: 'All apartments',
@@ -14,48 +13,20 @@ const params = reactive({
     rooms: ""
 })
 
-const { data: apartments } = useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments`, params: params })
+const { data: apartments } = fetchApartments({ key: `apartments`, params: params })
 
 watch(params, async (value) => {
     if (value.rooms == "4") {
-        await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: { "max_price": params.max_price, "min_room": 4 } })
+        await fetchApartments({ key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: { "max_price": params.max_price, "min_room": 4 } })
             .then(res => {
                 apartments.value = res.data.value
             })
     } else {
-        await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: params })
+        await fetchApartments({ key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: params })
             .then(res => apartments.value = res.data.value)
     }
 })
 
-
-await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments` })
-    .then(res => {
-        apartments.value = res.data.value
-    })
-
-const maxPrice = ref("")
-watch(maxPrice, async value => {
-    await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments-max-price-${value}`, params: { 'max_price': value } })
-        .then(res => {
-            apartments.value = res.data.value
-        })
-})
-
-const beds = ref("")
-watch(beds, async value => {
-    if (value == "4") {
-        await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments-beds-${value}`, params: { 'min_room': value } })
-            .then(res => {
-                apartments.value = res.data.value
-            })
-    } else {
-        await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartments-beds-${value}`, params: { 'bedrooms': value } })
-            .then(res => {
-                apartments.value = res.data.value
-            })
-    }
-})
 </script>
             
             
