@@ -9,28 +9,28 @@ definePageMeta({
 const route = useRoute()
 const apartments = ref<Apartment[]>([])
 
-const search = async (query: string) => {
-    await fetchApartments({ params: { search: query }, key: `apartments?${query}`})
+const search = async (query) => {
+    await fetchApartments({ params: query, key: `apartments-${Math.random() * 100}`})
         .then((res) => {
             apartments.value = res.data.value
         })
 }
 
 onBeforeRouteUpdate((to, from, next) => {
-    if (to.query.searchQuery !== from.query.searchQuery) {
-        search(to.query.searchQuery as string)
+    if (to.query !== from.query) {
+        search(to.query)
     }
     next()
 })
 
-search(route.query.searchQuery as string)
+search(route.query)
 
 </script>
 
 <template>
     <NuxtLayout name="page-with-map">
         <template #heading>
-            <h1 class="text-xl font-semibold">Showing results for {{route.query.searchQuery}}</h1>
+            <h1 class="text-xl font-semibold">Showing {{apartments.length}} results</h1>
         </template>
         <template #default>
             <template v-if="apartments.length" v-for="apartment of apartments">
