@@ -16,7 +16,7 @@ const search = async () => {
             path: '/search',
             query:
             {
-                searchQuery: searchField.value
+                search: searchField.value
             }
         })
 }
