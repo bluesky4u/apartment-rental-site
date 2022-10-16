@@ -36,15 +36,16 @@ definePageMeta({
 <template>
     <div id="main">
         <Navbar :hidden="!navSticky" />
-        <div ref="hero" class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover py-40"
+        <div ref="hero"
+            class="flex flex-col items-center text-white bg-hero-background bg-center bg-cover md:py-40 py-20"
             id="hero">
             <span class="m-0 text-2xl">Logo</span>
-            <h1 class="text-5xl my-4">Find it. Tour it. Make it yours.</h1>
-            <SearchBox styleClass="h-10 w-2/5 pl-4" />
+            <h1 class="text-3xl md:text-5xl my-4 text-center">Find it. Tour it. Make it yours.</h1>
+            <SearchBox styleClass="h-10 w-4/5 md:w-2/5 md:pl-4 pl-3" />
         </div>
 
         <main>
-            <section class="mx-20 py-4">
+            <section class="mx-5 md:mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Explore rentals in Accra</h2>
                 <ClientOnly fallbackTag="div">
                     <CustomCarousel :data="apartments">
@@ -55,7 +56,8 @@ definePageMeta({
                     <template #fallback>
                         <div v-for="apartment of apartments">
                             <h2>{{apartment.name}}</h2>
-                            <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} image`" style="height: 50px">
+                            <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} image`"
+                                style="height: 50px">
                             <p>{{apartment.price}}</p>
                             <p>{{apartment.location.city}}</p>
                         </div>
@@ -64,7 +66,7 @@ definePageMeta({
 
             </section>
 
-            <section class="mx-20 py-4">
+            <section class="mx-5 md:mx-20 py-4">
                 <h2 class="text-2xl text-center py-3">Browse apartments by type</h2>
                 <ClientOnly fallbackTag="div">
                     <CustomCarousel :data="apartmentTypes">
@@ -89,13 +91,13 @@ definePageMeta({
                 </ClientOnly>
             </section>
 
-            <section class="text-center bg-hero-background py-40 bg-center bg-cover text-white">
-                <h2 class="text-3xl mb-16">Let's help you find your new home</h2>
+            <section class="text-center bg-hero-background py-20 md:py-40 bg-center bg-cover text-white">
+                <h2 class="text-2xl mx-5 md:text-3xl mb-16">Let's help you find your new home</h2>
                 <NuxtLink to="/all-properties/" class="border border-blue-500 text-blue-500 px-5 py-2 rounded">Explore
                     all properties</NuxtLink>
             </section>
 
-            <section class="mx-20 my-5">
+            <section class="mx-5 md:mx-20 my-5">
                 <div>
                     <div class="flex flex-row items-center">
                         <span class="text-xl flex-none pr-5">Who are we</span>
