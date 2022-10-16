@@ -16,6 +16,6 @@ withDefaults(defineProps<Props>(), {
         <span class="m-0 pl-5 text-2xl">
             <NuxtLink to="/">Logo</NuxtLink>
         </span>
-        <SearchBox />
+        <SearchModal />
     </nav>
 </template>
