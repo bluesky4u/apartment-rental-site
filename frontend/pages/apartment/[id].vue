@@ -43,8 +43,8 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 
 <template>
     <div>
-        <div class="mx-20 mt-10">
-            <div id="apartment-detail-view">
+        <div class="mx-5 md:mx-20 mt-10">
+            <div id="apartment-detail-view" class="grid-cols-1 lg:grid-cols-[1fr_minmax(150px,_30%)]">
                 <main>
                     <div class="swiper-container my-5">
                         <Swiper :modules="modules" navigation :pagination="{ clickable: true }" :centeredSlides="true">
@@ -82,7 +82,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 
                     <div class="my-10">
                         <h1 class="text-3xl">Features and description</h1>
-                        <ul class="columns-2" id="features">
+                        <ul class="md:columns-2" id="features">
                             <li v-for="feature of apartmentDetails.features">{{ feature.name }}</li>
                         </ul>
                         <p>
@@ -142,7 +142,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 <style scoped>
 #apartment-detail-view {
     display: grid;
-    grid-template-columns: 1fr minmax(150px, 25%);
+    /* grid-template-columns: 1fr minmax(150px, 25%); */
 }
 
 #slide {
