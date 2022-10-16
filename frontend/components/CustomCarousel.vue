@@ -17,7 +17,7 @@ const props = defineProps({
     responsiveLayout: {
         default: {
             400: {
-                slidesPerView: 2
+                slidesPerView: 1
             },
             600: {
                 slidesPerView: 3
