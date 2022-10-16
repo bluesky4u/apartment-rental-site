@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Apartment } from '~~/composables/types';
 
 definePageMeta({
     title: 'All apartments',
@@ -8,25 +9,8 @@ definePageMeta({
 })
 
 
-const params = reactive({
-    max_price: "",
-    rooms: ""
-})
-
-const { data: apartments } = fetchApartments({ key: `apartments`, params: params })
-
-watch(params, async (value) => {
-    if (value.rooms == "4") {
-        await fetchApartments({ key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: { "max_price": params.max_price, "min_room": 4 } })
-            .then(res => {
-                apartments.value = res.data.value
-            })
-    } else {
-        await fetchApartments({ key: `apartments-max-price-${params.max_price}-rooms-${params.rooms}`, params: params })
-            .then(res => apartments.value = res.data.value)
-    }
-})
-
+const { data: apartments } = fetchApartments({ key: `apartments` })
+const updateApartments = (newApartments: Apartment[]) => apartments.value = newApartments
 </script>
             
             
@@ -34,27 +18,7 @@ watch(params, async (value) => {
     <NuxtLayout name="page-with-map">
         <template #heading>
             <h1 class="text-xl font-semibold">Browse all listings</h1>
-            <div class="flex flex-row">
-                <SearchBox style-class="w-full py-3 rounded" />
-
-                <label for="beds" class="hidden">Beds</label>
-                <select name="beds" id="beds" class="border px-2 ml-2" v-model="params.rooms">
-                    <option value="">Beds</option>
-                    <option v-for="i of [1,2,3]" :value="i">{{`${i} ${i == 1 ? 'Bed' : 'Beds'}`}}</option>
-                    <option value="4">4+ Beds</option>
-                </select>
-
-                <label for="max-price" class="hidden">Max Price</label>
-                <select name="max-price" id="max-price" class="border px-2 ml-2" v-model="params.max_price">
-                    <option value="">Max Price</option>
-                    <option value="1000">GHS 1000.00</option>
-                    <option value="2000">GHS 2000.00</option>
-                    <option value="5000">GHS 5000.00</option>
-                    <option value="10000">GHS 10000.00</option>
-                </select>
-
-                <button type="button" class="border ml-2 px-2">More</button>
-            </div>
+            <Filters @update-apartment-list="updateApartments" />
         </template>
 
         <template v-for="apartment of apartments">
