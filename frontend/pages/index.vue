@@ -8,11 +8,7 @@ onMounted(() => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.target == hero.value) {
-                if (entry.isIntersecting) {
-                    navSticky.value = false
-                } else {
-                    navSticky.value = true
-                }
+                navSticky.value = !entry.isIntersecting;
             }
         })
     }, {
