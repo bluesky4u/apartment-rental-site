@@ -44,7 +44,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 <template>
     <div>
         <div class="mx-5 md:mx-20 mt-10">
-            <div id="apartment-detail-view" class="grid-cols-1 lg:grid-cols-[1fr_minmax(150px,_30%)]">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(150px,_30%)]">
                 <main>
                     <div class="swiper-container my-5">
                         <Swiper :modules="modules" navigation :pagination="{ clickable: true }" :centeredSlides="true">
@@ -74,7 +74,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
                         </div>
                         <div class="flex items-center">
                             <CalenderIcon />
-                            <span class="ml-2">Available from N/A to N/A</span>
+                            <span class="ml-2">Available {{apartmentDetails.available_from }} to {{apartmentDetails.available_to_undefined ? "undetermined" : apartmentDetails.available_to }}</span>
                         </div>
                     </div>
 
@@ -140,11 +140,6 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 </template>
 
 <style scoped>
-#apartment-detail-view {
-    display: grid;
-    /* grid-template-columns: 1fr minmax(150px, 25%); */
-}
-
 #slide {
     width: 100% !important;
 }
