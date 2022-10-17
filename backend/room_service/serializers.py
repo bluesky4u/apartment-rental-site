@@ -15,6 +15,7 @@ class ApartmentFeatureSerializer(serializers.ModelSerializer):
         model = ApartmentFeature
         fields = "__all__"
 
+
 class ApartmentTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApartmentType
@@ -23,10 +24,13 @@ class ApartmentTypeSerializer(serializers.ModelSerializer):
 
 class ApartmentSerializer(serializers.ModelSerializer):
     features = ApartmentFeatureSerializer(many=True, read_only=False)
+
     class Meta:
         model = Apartment
         fields = ["id", "rooms", "kitchen", "garage",
-                  "living_room", "furnishing", "price", "apartment_type", "location", "apartment_image", "name", "bathrooms", "description", "features", "apartment_contact" ]
+                  "living_room", "furnishing", "price", "apartment_type", "location", "apartment_image", "name",
+                  "bathrooms", "description", "features", "apartment_contact", "available_from", "available_to",
+                  "available_to_undefined"]
         depth = 1
 
 

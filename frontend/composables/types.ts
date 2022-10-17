@@ -7,13 +7,15 @@ export interface Apartment {
     bathrooms: number;
     description: string;
     apartment_image: ApartmentImage[];
-    availability?: Date
     apartment_type?: ApartmentType;
     furnishing?: boolean;
     kitchen?: boolean
     garage?: boolean
     features: ApartmentFeature[];
     apartment_contact?: ApartmentContact;
+    available_from?: Date
+    available_to?: Date;
+    available_to_undefined: boolean
 }
 
 export interface ApartmentLocation {
