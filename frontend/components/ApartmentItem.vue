@@ -10,8 +10,9 @@ const props = defineProps<
 <template>
     <div class="border border-grey rounded my-5">
         <div class="flex flex-col md:flex-row w-full">
-            <picture class="w-[450px] h-[300px]">
+            <picture class="md:w-[450px] h-[300px]">
                 <NuxtLink :to="`/apartment/${apartment.id}/`">
+                  <span class="new-chip">new</span>
                     <img :src="apartment.apartment_image[0].image" :alt="`${apartment.name} thumbnail`"
                         class="h-full object-cover md:w-full">
                 </NuxtLink>
@@ -36,3 +37,19 @@ const props = defineProps<
         </div>
     </div>
 </template>
+
+<style scoped>
+.new-chip {
+  position: absolute;
+  border-radius: 100vh;
+  padding: 0.25rem 1rem;
+  margin: 0.5rem;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+}
+
+img:hover {
+  transform: scale(105%);
+  transition: all 200ms ease-in-out;
+}
+</style>
