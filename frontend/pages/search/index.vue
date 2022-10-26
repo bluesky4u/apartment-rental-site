@@ -1,29 +1,27 @@
 <script setup lang="ts">
 import { onBeforeRouteUpdate } from 'vue-router';
-import { Apartment } from '~~/composables/types';
 
 definePageMeta({
     layout: false
 })
 
 const route = useRoute()
-const apartments = ref<Apartment[]>([])
+const { data: apartments } = await searchApartments(route.query)
 
 const search = async (query) => {
-    await fetchApartments({ params: query, key: `apartments/?search=${query.min_price}-${query.max_price}-${query.rooms}-${query.location__city}-${query.search}-` })
-        .then((res) => {
-            apartments.value = res.data.value
-        })
+
 }
 
-onBeforeRouteUpdate((to, from, next) => {
+onBeforeRouteUpdate(async (to, from, next) => {
     if (to.query !== from.query) {
-        search(to.query)
+        await searchApartments(to.query)
+            .then((res) => {
+                apartments.value = res.data.value
+            })
     }
     next()
 })
 
-search(route.query)
 
 </script>
 
