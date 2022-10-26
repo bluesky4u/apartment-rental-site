@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "sulleyrydt8.pythonanywhere.com"
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
