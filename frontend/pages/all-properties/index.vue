@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 
-const { data: apartments } = fetchApartments({ key: `apartments` })
+const { data: apartments } = await fetchApartments({ key: `apartments` })
 const updateApartments = (newApartments: Apartment[]) => apartments.value = newApartments
 </script>
             

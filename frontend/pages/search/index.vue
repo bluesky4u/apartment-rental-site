@@ -10,7 +10,7 @@ const route = useRoute()
 const apartments = ref<Apartment[]>([])
 
 const search = async (query) => {
-    await fetchApartments({ params: query, key: `apartments-${Math.random() * 100}`})
+    await fetchApartments({ params: query, key: `apartments/?search=${query.min_price}-${query.max_price}-${query.rooms}-${query.location__city}-${query.search}-` })
         .then((res) => {
             apartments.value = res.data.value
         })
@@ -30,7 +30,7 @@ search(route.query)
 <template>
     <NuxtLayout name="page-with-map">
         <template #heading>
-            <h1 class="text-xl font-semibold">Showing {{apartments.length}} results</h1>
+            <h1 class="text-xl font-semibold">Showing {{ apartments.length }} results</h1>
         </template>
         <template #default>
             <template v-if="apartments.length" v-for="apartment of apartments">
