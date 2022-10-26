@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "sulleyrydt8.pythonanywhere.com"
+    "sulleyrydt8.pythonanywhere.com",
+    "*.vercel.app"
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
