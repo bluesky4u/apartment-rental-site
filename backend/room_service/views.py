@@ -22,7 +22,7 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = Apartment.objects.all()
     serializer_class = ApartmentSerializer
     filterset_class = ApartmentFilter
-    search_fields = ['name', 'apartment_type__name', 'location__city', 'location__address']
+    search_fields = ['name', 'apartment_type__name', 'location__city', 'location__address', 'location__region']
 
 
 class ApartmentImageViewSet(viewsets.ModelViewSet):

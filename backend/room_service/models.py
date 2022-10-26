@@ -6,6 +6,7 @@ class Location(models.Model):
 
     address = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=20)
+    region = models.CharField(default="", max_length=200)
     long = models.CharField(max_length=20)
     lat = models.CharField(max_length=20)
 
@@ -21,13 +22,7 @@ class Apartment(models.Model):
     name = models.CharField(max_length=200, default="")
 
     rooms = models.IntegerField(default=0)
-    # bedrooms = models.IntegerField(default=0) deleting this because rooms just mean bedrooms
     bathrooms = models.IntegerField(default=0)
-
-    kitchen = models.BooleanField(default=False)
-    garage = models.BooleanField(default=False)
-    living_room = models.BooleanField(default=True)
-    furnishing = models.BooleanField(default=False)
 
     price = models.DecimalField(decimal_places=2, max_digits=10)
 
@@ -44,6 +39,8 @@ class Apartment(models.Model):
     available_to = models.DateField(default=now, blank=True)
     available_to_undefined = models.BooleanField(default=True)
 
+    date_added = models.DateField(default=now, blank=True)
+
 
 class ApartmentImage(models.Model):
     
@@ -54,6 +51,7 @@ class ApartmentImage(models.Model):
 class ApartmentFeature(models.Model):
 
     name = models.CharField(max_length=200, default="")
+    highlight = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
