@@ -11,7 +11,7 @@ import CalenderIcon from '../../components/svgs/CalenderIcon.vue';
 
 
 const route = useRoute()
-
+// make apartment details and property apartments request simultaneously
 const { data: apartmentDetails } = await fetchApartmentDetails(route.params.id.toString(), { key: `apartments_${route.params.id}` })
 const { data: proximityApartments, pending: loadingProximityApartments } = fetchApartments(
     {
