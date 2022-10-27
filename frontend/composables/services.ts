@@ -1,6 +1,6 @@
 import { Apartment, ApartmentType } from "./types"
-export const baseURL = 'http://localhost:8000'
-// export const baseURL = 'https://sulleyrydt8.pythonanywhere.com'
+// export const baseURL = 'http://localhost:8000'
+export const baseURL = 'https://sulleyrydt8.pythonanywhere.com'
 
 const fetchOptions = {
     baseURL: `${baseURL}/v1/`,
