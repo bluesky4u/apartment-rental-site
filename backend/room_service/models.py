@@ -7,14 +7,15 @@ class Location(models.Model):
     address = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=20)
     region = models.CharField(default="", max_length=200)
-    long = models.CharField(max_length=20)
-    lat = models.CharField(max_length=20)
 
-
+    
 class ApartmentType(models.Model):
 
     name = models.CharField(max_length=20, default="Unspecified")
     image = models.ImageField(upload_to="apartment_type", default="")
+
+    def __str__(self) -> str:
+        return str(self.name)
 
 
 class Apartment(models.Model):
@@ -40,7 +41,10 @@ class Apartment(models.Model):
     available_to_undefined = models.BooleanField(default=True)
 
     date_added = models.DateField(default=now, blank=True)
+    units = models.IntegerField(default=1)
 
+    def __str__(self) -> str:
+        return str(self.name)
 
 class ApartmentImage(models.Model):
     

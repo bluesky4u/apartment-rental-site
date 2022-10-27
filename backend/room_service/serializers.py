@@ -29,7 +29,7 @@ class ApartmentSerializer(serializers.ModelSerializer):
         model = Apartment
         fields = ["id", "rooms", 
                   "price", "apartment_type", "location", "apartment_image", "name",
-                  "bathrooms", "description", "features", "apartment_contact", "available_from", "available_to",
+                  "bathrooms", "units", "description", "features", "apartment_contact", "available_from", "available_to",
                   "available_to_undefined", "date_added"]
         depth = 1
 

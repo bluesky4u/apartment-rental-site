@@ -1,11 +1,10 @@
 import { Apartment, ApartmentType } from "./types"
-const fetchOptions = {
-    baseURL: 'https://sulleyrydt8.pythonanywhere.com/v1/',
-}
+export const baseURL = 'http://localhost:8000'
+// export const baseURL = 'https://sulleyrydt8.pythonanywhere.com'
 
-// const fetchOptions = {
-//     baseURL: 'http://localhost:8000/v1/',
-// }
+const fetchOptions = {
+    baseURL: `${baseURL}/v1/`,
+}
 
 
 export const fetchApartments = (params: any = {}) => useFetch<Apartment[]>("apartments/", { ...params, ...fetchOptions })
