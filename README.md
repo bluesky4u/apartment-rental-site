@@ -7,8 +7,8 @@ and [Django Rest Framework](https://www.django-rest-framework.org/) as the backe
 
 ![Demo](/demo/apartment-rentals-3.png)
 More screenshots can be found in the [demo](/demo) folder.
-For a live demo, visit [https://apartment-rentals-site.vercel.app/](https://apartment-rentals-site.vercel.app)
-For the admin panel, visit [https://apartment-rentals-site.vercel.app/admin](https://apartment-rentals-site.vercel.app/admin)
+For a live demo, visit [https://apartment-rental-site.vercel.app/](https://apartment-rental-site.vercel.app/)
+For the admin panel, visit [https://apartment-rental-site.vercel.app/admin](https://apartment-rental-site.vercel.app/admin)
 
 Login with the following credentials:
 
