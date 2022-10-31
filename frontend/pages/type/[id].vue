@@ -11,15 +11,16 @@ definePageMeta({
 })
 
 
-const { data: apartments } = await useFetch<Apartment[]>(`http://localhost:8000/v1/apartments/`, { key: `apartment_type_${route.params.id}`, params: { 'apartment_type': route.params.id } })
+const { data: apartments } = await fetchApartments({ key: `apartment_type_${route.params.id}`, params: { 'apartment_type': route.params.id } })
 </script>
     
     
 <template>
     <NuxtLayout name="page-with-map">
         <template #heading>
-            <h1 class="text-xl font-semibold">Browse all listings in the {{apartments.length ?
-            apartments[0].apartment_type.name: 'this'}} category</h1>
+            <h1 class="text-xl font-semibold">Browse all listings in the {{ apartments.length ?
+                    apartments[0].apartment_type.name : 'this'
+            }} category</h1>
         </template>
 
         <template v-if="apartments.length">
@@ -29,7 +30,7 @@ const { data: apartments } = await useFetch<Apartment[]>(`http://localhost:8000/
         </template>
 
         <template #map>
-                <Map />
+            <Map />
         </template>
     </NuxtLayout>
 </template>

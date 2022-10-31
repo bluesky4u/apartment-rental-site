@@ -12,7 +12,7 @@
     "autoprefixer": "^10.4.7",
     "nuxt": "^3.0.0-rc.11",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.5"
+    "tailwindcss": "^3.2.1"
   },
   "dependencies": {
     "defu": "^6.1.0",
